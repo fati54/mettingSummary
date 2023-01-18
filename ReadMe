@@ -1,0 +1,43 @@
+# OpenAI Text Correction
+
+This code uses the OpenAI API to correct text using the `text-davinci-003` model. The input text is read from a file specified by the user and the corrected text is written to a file specified by the user.
+
+## Prerequisites
+
+- You need an OpenAI API key. You can get one by signing up on the OpenAI website.
+
+
+## Usage
+
+- There are two options to setup the OpenAI API key
+    1. **Option 1** : Use a configuration file: You can create a separate configuration file that contains your API key, and then read it in your code. This way, the key is not stored in the code itself, and can be easily updated or changed. You could use a json or yaml file.
+    2. **Option 2** : Use the OPENAI_API_KEY environment variable: You can store your API key as an environment variable on your system, and then use the `os.getenv()` function to read it in your code.
+- The input file name and output file name can be passed as command line arguments. By default, the code uses `input.txt` as input file name and `output.txt` as output file name.
+- Run the code using a command line interface or an IDE of your choice
+
+
+## Configuration
+
+The code uses the `text-davinci-003` model by default, but you can change it to any other model that you want to use.
+
+You can also change the input and output file names, and the parameters passed to the `openai.Completion.create()` method to customize the correction process according to your needs.
+
+here is an explanation of each of the parameters used :
+
+model: The name of the model to use for the completion. In this case, it's "text-davinci-003", which is a very large and powerful language model trained by OpenAI.
+
+prompt: The input text that the model will use to generate a response. The value of this variable is not shown in the code snippet.
+
+temperature: Controls the "creativity" or "divergence" of the model's output. A higher temperature will result in more varied and diverse responses, while a lower temperature will produce responses that are more similar to the training data. In this case, it is set to 0.
+
+max_tokens: The maximum number of tokens (words or word pieces) that the model will generate in its response. In this case, it is set to 60
+
+top_p: Controls the proportion of the mass of the distribution that is retained in the generated sequence. 1.0 means that the model will keep all the mass and will generate the sequence of tokens with 100% probability of the most likely tokens.
+
+frequency_penalty: A value that penalizes the model if it generates tokens that were not frequent in the training data. This can help to reduce repetition and generate more varied output. In this case, it is set to 0.0
+
+presence_penalty: A value that penalizes the model if it generates tokens that were not present in the input sequence. This can help to ensure that the generated text is relevant to the input prompt. In this case, it is set to 0.0
+
+## Call exemple 
+
+python your_script.py -i your_input_file_name.txt -o your_output_file_name.txt
